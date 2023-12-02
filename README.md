@@ -17,3 +17,6 @@ Advent of Code 2023, in Rust.
 * Other directory `misc`: Contains Python solution and misc notes for Day 1.  Didn't have time to get ready
 
 ## Completed Days
+
+* Day 1 `**`: Python (need to go back and redo)
+* Day 2 `**`: Rust
