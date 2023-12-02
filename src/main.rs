@@ -36,28 +36,27 @@ fn main() {
 
     let run_with_input_file = |path: &str| {
         match Command::new(&soln_path).arg(&task_no.to_string()).arg(path).output() {
-            Ok(o) =>
+            Ok(o) => {
                 if !o.stderr.is_empty() {
                     print!("ERR: Program returned error: ");
                     match String::from_utf8(o.stderr) {
                         Ok(s) => println!("{}", s),
-                        Err(_) => println!("<could not convert to utf8>")
+                        Err(_) => println!("<could not convert to utf8>\n")
                     }
                 }
-                else {
-                    match String::from_utf8(o.stdout) {
-                        Ok(s) => println!("{}", s),
-                        Err(_) => println!("<could not convert to utf8>")
-                    }
+
+                println!("Program output:");
+                match String::from_utf8(o.stdout) {
+                    Ok(s) => println!("{}", s),
+                    Err(_) => println!("<could not convert to utf8>\n")
                 }
+            }
             Err(e) => println!("Execution failed with err \"{}\"", e)
         }
     };
 
     println!("=== Running with sample input ===");
     run_with_input_file(&in_sample_path);
-
-    println!();
 
     println!("=== Running with real input ===");
     run_with_input_file(&in_path);
