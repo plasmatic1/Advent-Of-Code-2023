@@ -18,5 +18,5 @@ Advent of Code 2023, in Rust.
 
 ## Completed Days
 
-* Day 1 `**`: Python (need to go back and redo)
+* Day 1 `**`: Rust, Python
 * Day 2 `**`: Rust
