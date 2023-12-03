@@ -22,3 +22,4 @@ To run individual solutions, use `cargo run` or `cargo build` then `./target/deb
 
 * Day 1 `**`: Rust, Python
 * Day 2 `**`: Rust
+* Day 3 `**`: Rust

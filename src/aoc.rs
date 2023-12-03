@@ -35,12 +35,12 @@ pub fn get_args() -> AOCArgs {
  * Splits a string into tokens (by whitespace)
  */
 pub fn get_input_tokens() -> Vec<String> {
-    get_input().trim().split(char::is_whitespace).map(str::to_owned).collect()
+    get_input().split(char::is_whitespace).filter(|s| !s.is_empty()).map(str::trim).map(str::to_owned).collect()
 }
 
 /**
  * Splits a string into tokens (by lines)
  */
 pub fn get_input_lines() -> Vec<String> {
-    get_input().trim().split('\n').map(str::to_owned).collect()
+    get_input().trim().split('\n').map(str::trim).map(str::to_owned).collect()
 }

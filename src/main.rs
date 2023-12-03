@@ -1,5 +1,6 @@
 extern crate structopt;
 
+use std::process::Stdio;
 use std::process::exit;
 use std::process::Command;
 
@@ -47,7 +48,13 @@ fn main() {
     println!();
 
     let run_with_input_file = |path: &str| {
-        match Command::new(&soln_path).arg(&opt.task.to_string()).arg(path).output() {
+        match Command::new(&soln_path)
+            .arg(&opt.task.to_string())
+            .arg(path)
+            .stdout(Stdio::inherit())
+            .stderr(Stdio::inherit())
+            .output() {
+
             Ok(o) => {
                 if !o.stderr.is_empty() {
                     print!("ERR: Program returned error: ");
@@ -55,12 +62,6 @@ fn main() {
                         Ok(s) => println!("{}", s),
                         Err(_) => println!("<could not convert to utf8>\n")
                     }
-                }
-
-                println!("Program output:");
-                match String::from_utf8(o.stdout) {
-                    Ok(s) => println!("{}", s),
-                    Err(_) => println!("<could not convert to utf8>\n")
                 }
             }
             Err(e) => println!("Execution failed with err \"{}\"", e)
