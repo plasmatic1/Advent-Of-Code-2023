@@ -3,14 +3,13 @@ use std::env;
 
 const USAGE: &'static str = "Usage: ./dayX <task # (1/2)> <input_path>";
 
+/// Args to AoC solution
 pub struct AOCArgs {
     pub task: i32,
     pub path: String
 }
 
-/**
- * Read input contents with proper error checking
- */
+/// Read input contents with proper error checking
 fn get_input() -> String {
     let args = get_args();
     let mut file = File::open(args.path).expect("File not found");
@@ -20,9 +19,7 @@ fn get_input() -> String {
     String::from_utf8(buf).expect("Could not convert contents to UTF-8")
 }
 
-/**
- * Resolve task number
- */
+/// Return arguments to the program.  Namely, input path and task number
 pub fn get_args() -> AOCArgs {
     let args: Vec<String> = env::args().collect();
     AOCArgs {
@@ -31,16 +28,17 @@ pub fn get_args() -> AOCArgs {
     }
 }
 
-/**
- * Splits a string into tokens (by whitespace)
- */
+/// Splits a string into tokens, by whitespace.
+/// 
+/// * Tokens may be separated by multiple spaces
+/// * Tokens are trimmed
 pub fn get_input_tokens() -> Vec<String> {
     get_input().split(char::is_whitespace).filter(|s| !s.is_empty()).map(str::trim).map(str::to_owned).collect()
 }
 
-/**
- * Splits a string into tokens (by lines)
- */
+/// Splits a string into tokens (by lines)
+/// 
+/// Individual lines are trimmed
 pub fn get_input_lines() -> Vec<String> {
     get_input().trim().split('\n').map(str::trim).map(str::to_owned).collect()
 }

@@ -19,6 +19,12 @@ struct Opt {
     sample_only: bool,
 }
 
+#[cfg(debug_assertions)]
+const EXEC_DIR: &'static str = "target/debug";
+
+#[cfg(not(debug_assertions))]
+const EXEC_DIR: &'static str = "target/release";
+
 fn main() {
     let opt = Opt::from_args();
     if !(1 <= opt.day && opt.day <= 25) {
@@ -42,7 +48,7 @@ fn main() {
         "windows" => ".exe",
         _ => ""
     };
-    let soln_path = format!("target/debug/day{}{}", opt.day, soln_ext);
+    let soln_path = format!("{}/day{}{}", EXEC_DIR, opt.day, soln_ext);
     println!("Solution path: {}", soln_path);
 
     println!();
