@@ -28,3 +28,4 @@ To run individual solutions, use `cargo run` or `cargo build` then `./target/deb
 |Day 3|`**`|Rust||
 |Day 4|`**`|Rust||
 |Day 5|`**`|Rust|multicore, runtime: 103.205s w/ t=1 threads, 25.602s w/ t=6 threads.  Intel i5-9600K @ 3.7 GHz, 6 cores. |
+|Day 6|`**`|Rust||
