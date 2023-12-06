@@ -8,7 +8,8 @@ To run individual solutions, use `cargo run` or `cargo build` then `./target/deb
 
 * `lib.rs`: Common libraries used for AoC
 * **Runner** (main binary):
-    * Found in `target/debug/aoc[.exe]`
+    * **Run using `cargo run`**
+    * Found in `target/debug/aoc[.exe]` or `target/release/aoc[.exe]`
     * Executor for individual solutions.  Run executable for help
 * **Solutions** (binaries in `bin/`):
     * Solutions for individual days.  Each binary is executed with `./dayX <task_no> <input_file_path>`
